@@ -8,7 +8,7 @@ export default [
       globals: globals.node, // Definindo o ambiente como Node.js
       ecmaVersion: "latest", // Suporte para ECMAScript mais recente
       sourceType: "module"   // Habilita o uso de módulos ES6
-    },
+    }
   },
   pluginJs.configs.recommended,
   {
@@ -20,7 +20,8 @@ export default [
       "semi": ["error", "always"],    // Sempre usar ponto e vírgula
       "quotes": ["error", "double"],  // Usar aspas duplas
       "indent": ["error", 2],         // Indentação de 2 espaços
-      "comma-dangle": ["error", "never"] // Não permitir vírgulas no final de listas
+      "comma-dangle": ["error", "never"], // Não permitir vírgulas no final de listas
+      "class-methods-use-this": "off"
     }
   }
 ];
