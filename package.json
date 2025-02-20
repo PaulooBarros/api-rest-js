@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@sequelize/mssql": "^7.0.0-alpha.45",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "sequelize": "^6.37.5",
     "sqlserver": "^0.0.2-security",
