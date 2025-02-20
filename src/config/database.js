@@ -1,6 +1,7 @@
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
-module.exports = {
+export default {
   dialect: 'mssql',
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
