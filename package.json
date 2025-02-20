@@ -14,9 +14,14 @@
     "eslint": "^9.20.1",
     "globals": "^15.15.0",
     "nodemon": "^3.1.9",
+    "sequelize-cli": "^6.6.2",
     "sucrase": "^3.35.0"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "@sequelize/mssql": "^7.0.0-alpha.45",
+    "express": "^4.21.2",
+    "sequelize": "^6.37.5",
+    "sqlserver": "^0.0.2-security",
+    "tedious": "^18.6.1"
   }
 }
