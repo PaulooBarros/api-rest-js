@@ -1,4 +1,4 @@
-import Sequelize, { DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
 export default class Aluno extends Model {
   static init(sequelize) {
@@ -9,14 +9,23 @@ export default class Aluno extends Model {
           autoIncrement: true,
           primaryKey: true
         },
-        nome: DataTypes.STRING,
+        nome: {
+          type: DataTypes.STRING
+        },
         sobrenome: DataTypes.STRING,
         email: DataTypes.STRING,
         idade: DataTypes.INTEGER,
         peso: DataTypes.FLOAT,
-        altura: DataTypes.FLOAT
+        altura: DataTypes.FLOAT,
       },
-      {sequelize});
+
+      {
+        sequelize,
+        modelName: "alunos",
+        createdAt: "created_at",
+        updatedAt: "updated_at"
+      }
+    );
     // super.init(
     //   {
     //     id: {

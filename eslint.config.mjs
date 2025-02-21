@@ -19,7 +19,6 @@ export default [
       "strict": ["error", "global"],  // Usa o modo estrito no escopo global
       "semi": ["error", "always"],    // Sempre usar ponto e vírgula
       "indent": ["error", 2],         // Indentação de 2 espaços
-      "comma-dangle": ["error", "never"], // Não permitir vírgulas no final de listas
       "class-methods-use-this": "off"
     }
   }
