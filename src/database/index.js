@@ -4,6 +4,7 @@ import Aluno from "../models/Aluno.js";
 const models = [Aluno];
 
 // const connection = new Sequelize(databaseConfig);
-const connection = new Sequelize('postgres://postgres:FantaUva10!@localhost:5432/Escola'); // Example for postgres
+//const connection = new Sequelize('postgres://postgres:FantaUva10!@localhost:5432/Escola'); // Example for postgres
+const connection = new Sequelize('postgres://postgres:FantaUva10!@localhost:5432/Api-paulo'); 
 
 models.forEach(model => model.init(connection));
