@@ -23,6 +23,7 @@ export default class User extends Model {
         email: {
           type: DataTypes.STRING,
           defaultValue: "",
+          unique: true,
           validate: {
             isEmail: {
               args: [3, 255],
@@ -54,8 +55,10 @@ export default class User extends Model {
       }
     );
 
-    this.addHook('beforeSave', async user => {
-      user.password_hash = await bcrypt.hash(user.password, 8);
+    this.addHook("beforeSave", async (user) => {
+      if (user.password) {
+        user.password_hash = await bcrypt.hash(user.password, 8);
+      }
     }); // Fazendo o hash da senha para não ser salva no banco
 
     return this;
