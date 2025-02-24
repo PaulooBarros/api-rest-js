@@ -1,4 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import bcrypt from "bcryptjs";
 
 export default class User extends Model {
   static init(sequelize) {
@@ -52,6 +53,11 @@ export default class User extends Model {
         updatedAt: "updated_at",
       }
     );
+
+    this.addHook('beforeSave', async user => {
+      user.password_hash = await bcrypt.hash(user.password, 8);
+    }); // Fazendo o hash da senha para não ser salva no banco
+
     return this;
   }
 }
