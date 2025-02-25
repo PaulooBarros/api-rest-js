@@ -23,7 +23,7 @@ class UserController {
       const users = await User.findAll();
       return res.json(users);
     } catch (e) {
-      return res.json(null);
+      return res.json(e);
     }
   }
 
@@ -32,7 +32,7 @@ class UserController {
       const user = await User.findByPk(req.params.id);
       return res.json(user);
     } catch (e) {
-      return res.json(null);
+      return res.json(e);
     }
   }
 
