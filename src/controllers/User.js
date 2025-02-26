@@ -3,12 +3,9 @@ import User from "../models/User.js";
 class UserController {
   async store(req, res) {
     try {
-      const novoUsuario = await User.create({
-        nome: "Joao",
-        email: "joao2@email.com",
-        password: "@Test123",
-      });
-      return res.json(novoUsuario);
+      const novoUsuario = await User.create(req.body);
+      const {id, nome , email} = novoUsuario;
+      return res.json({id, nome , email});
     } catch (e) {
       if (e.errors) {
         res.status(400).json(e.original.detail);
@@ -20,9 +17,7 @@ class UserController {
 
   async index(req, res) {
     try {
-      const users = await User.findAll();
-      console.log('User Id', req.userId);
-      console.log('User email', req.userEmail);
+      const users = await User.findAll({ attributes: ["id", "nome", "email"] });
       return res.json(users);
     } catch (e) {
       return res.json(e);
@@ -32,7 +27,8 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
-      return res.json(user);
+      const { id, nome, email } = user;
+      return res.json({ id, nome, email });
     } catch (e) {
       return res.json(e);
     }
@@ -40,13 +36,7 @@ class UserController {
 
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ["Missing ID."],
-        });
-      }
-
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
@@ -55,8 +45,9 @@ class UserController {
       }
 
       const novosDados = await user.update(req.body);
+      const {id, nome , email} = novosDados;
 
-      return res.json(novosDados);
+      return res.json({id, nome , email});
     } catch (e) {
       if (e.errors) {
         console.log(e);
@@ -69,13 +60,7 @@ class UserController {
 
   async delete(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ["Missing ID."],
-        });
-      }
-
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
