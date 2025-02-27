@@ -73,7 +73,6 @@ class UserController {
       return res.status(200).json("Usuário removido com sucesso");
     } catch (e) {
       if (e.errors) {
-        console.log(e);
         res.status(400).json(e.errors.map((erro) => erro.message));
       } else {
         res.status(400).json({ error: e.message || "Erro desconhecido" });
