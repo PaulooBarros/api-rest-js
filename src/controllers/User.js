@@ -1,17 +1,14 @@
 import User from "../models/User.js";
+import { CustomError } from "../Behaviours/customError.js";
 
 class UserController {
   async store(req, res) {
     try {
       const novoUsuario = await User.create(req.body);
-      const {id, nome , email} = novoUsuario;
-      return res.json({id, nome , email});
+      const { id, nome, email } = novoUsuario;
+      return res.json({ id, nome, email });
     } catch (e) {
-      if (e.errors) {
-        res.status(400).json(e.original.detail);
-      } else {
-        res.status(400).json("Erro desconhecido");
-      }
+      CustomError(e, res);
     }
   }
 
@@ -45,16 +42,11 @@ class UserController {
       }
 
       const novosDados = await user.update(req.body);
-      const {id, nome , email} = novosDados;
+      const { id, nome, email } = novosDados;
 
-      return res.json({id, nome , email});
+      return res.json({ id, nome, email });
     } catch (e) {
-      if (e.errors) {
-        console.log(e);
-        res.status(400).json(e.errors.map((erro) => erro.message));
-      } else {
-        res.status(400).json({ error: e.message || "Erro desconhecido" });
-      }
+      CustomError(e, res);
     }
   }
 
@@ -72,11 +64,7 @@ class UserController {
 
       return res.status(200).json("Usuário removido com sucesso");
     } catch (e) {
-      if (e.errors) {
-        res.status(400).json(e.errors.map((erro) => erro.message));
-      } else {
-        res.status(400).json({ error: e.message || "Erro desconhecido" });
-      }
+      CustomError(e, res);
     }
   }
 }

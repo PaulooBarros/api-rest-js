@@ -1,3 +1,4 @@
+import { CustomError } from "../Behaviours/customError.js";
 import Aluno from "../models/Aluno.js";
 
 class AlunoController {
@@ -18,11 +19,7 @@ class AlunoController {
       const { id, nome, email } = novoAluno;
       return res.json({ id, nome, email });
     } catch (e) {
-      if (e.errors) {
-        res.status(400).json(e.original.detail);
-      } else {
-        res.status(400).json("Erro desconhecido");
-      }
+      CustomError(e, res);
     }
   }
 
@@ -51,12 +48,7 @@ class AlunoController {
 
       return res.json({ id, nome, email });
     } catch (e) {
-      if (e.errors) {
-        console.log(e);
-        res.status(400).json(e.errors.map((erro) => erro.message));
-      } else {
-        res.status(400).json({ error: e.message || "Erro desconhecido" });
-      }
+      CustomError(e, res);
     }
   }
 
@@ -74,11 +66,8 @@ class AlunoController {
 
       return res.status(200).json("Aluno removido com sucesso");
     } catch (e) {
-      if (e.errors) {
-        res.status(400).json(e.errors.map((erro) => erro.message));
-      } else {
-        res.status(400).json({ error: e.message || "Erro desconhecido" });
-      }
+      CustomError(e, res);
+
     }
   }
 }
