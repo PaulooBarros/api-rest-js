@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import { CustomError } from "../Behaviours/customError.js";
+import { CustomError } from "../middlewares/customError.js";
 
 class UserController {
   async store(req, res) {

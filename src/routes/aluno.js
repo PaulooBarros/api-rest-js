@@ -11,9 +11,9 @@ router.get('/', AlunoController.index);
 
 router.get('/:id', AlunoController.show);
 
-router.put('/', loginRequired, AlunoController.update);
+router.put('/:id', loginRequired, AlunoController.update);
 
-router.delete('/', loginRequired, AlunoController.delete);
+router.delete('/:id', loginRequired, AlunoController.delete);
 
 
 

@@ -1,4 +1,4 @@
-import { CustomError } from "../Behaviours/customError.js";
+import { CustomError } from "../middlewares/customError.js";
 import Aluno from "../models/Aluno.js";
 
 class AlunoController {
@@ -35,7 +35,7 @@ class AlunoController {
 
   async update(req, res) {
     try {
-      const aluno = await Aluno.findByPk(req.userId);
+      const aluno = await Aluno.findByPk(req.params.id);
 
       if (!aluno) {
         return res.status(400).json({
@@ -54,7 +54,7 @@ class AlunoController {
 
   async delete(req, res) {
     try {
-      const aluno = await Aluno.findByPk(req.userId);
+      const aluno = await Aluno.findByPk(req.params.id);
 
       if (!aluno) {
         return res.status(400).json({
