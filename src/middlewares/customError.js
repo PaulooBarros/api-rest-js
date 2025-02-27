@@ -9,3 +9,4 @@ export const CustomError = (error, response) => {
   }
 };
 
+// Custom Error parcialmente presente no middlewares. Provavelmente será tirado daqui. C
