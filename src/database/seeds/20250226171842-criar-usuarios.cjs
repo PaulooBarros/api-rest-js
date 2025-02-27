@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         nome: 'Mateus',
-        email: 'mateus@email.com',
+        email: 'mateus1@email.com',
         password_hash: bcrypt.hashSync('@Test123', 8),
         created_at: new Date(),
         updated_at: new Date(),
@@ -15,7 +15,7 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         nome: 'Tulio',
-        email: 'tulio@email.com',
+        email: 'tulio1@email.com',
         password_hash: bcrypt.hashSync('@Test123', 8),
         created_at: new Date(),
         updated_at: new Date(),
@@ -24,7 +24,7 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         nome: 'Jonas',
-        email: 'jonas@email.com',
+        email: 'jonas1@email.com',
         password_hash: bcrypt.hashSync('@Test123', 8),
         created_at: new Date(),
         updated_at: new Date(),
