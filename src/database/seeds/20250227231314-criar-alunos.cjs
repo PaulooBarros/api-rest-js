@@ -51,3 +51,6 @@ module.exports = {
     await queryInterface.bulkDelete('alunos', null, {});
   }
 };
+
+
+// npx sequelize-cli db:seed --seed 20250227231314-criar-alunos.cjs comando para rodar essa seed

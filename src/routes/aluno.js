@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AlunoController from "../controllers/aluno.js";
+import AlunoController from "../controllers/Aluno.js";
 import loginRequired from "../middlewares/loginRequired.js";
 
 
